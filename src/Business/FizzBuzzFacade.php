@@ -6,6 +6,11 @@
     class FizzBuzzFacade
     {
         /**
+         * @var FizzBuzzFactory
+         */
+        private $factory = null;
+
+        /**
          * @param int $to
          * @param int $from
          *
@@ -21,6 +26,9 @@
          */
         private function getFactory()
         {
-            return new FizzBuzzFactory();
+            if ($this->factory === null) {
+                $this->factory = new FizzBuzzFactory();
+            }
+            return $this->factory;
         }
     }
